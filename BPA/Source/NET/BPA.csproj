@@ -108,6 +108,7 @@
     <Compile Include="RecordLists.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BPA_Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BPA_ClassDiagramMain.cd" />
