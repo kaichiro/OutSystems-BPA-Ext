@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OutSystems.NssBPA
 {
-    public static class Utls
+    public static class BPA_Utils
     {
         public enum Tipo { ESPACO, ZERO, NADA }
         private enum TipoPad { LEFT, RIGHT }
