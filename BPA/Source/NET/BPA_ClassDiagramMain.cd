@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OutSystems.NssBPA.BPA_Cabecalho">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAQAAAAAAAAAAAAAAAAAAAAgAAAQA=</HashCode>
+      <FileName>BPA_Cabecalho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutSystems.NssBPA.BPA_Individualizado">
+    <Position X="3.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAEAAAAAAAAAAAIAAAAAAAEAAAA=</HashCode>
+      <FileName>BPA_Individualizado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutSystems.NssBPA.BPA_Controller">
+    <Position X="7" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAIAQAAAAAAEEAAAAA=</HashCode>
+      <FileName>BPA_Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

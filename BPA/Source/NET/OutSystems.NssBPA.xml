@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OutSystems.NssBPA</name>
+    </assembly>
+    <members>
+        <member name="M:OutSystems.NssBPA.CssBPA.MssCreateCabecalho(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sscbc_mvm_03"></param>
+            <param name="sscbc_lin_04"></param>
+            <param name="sscbc_flh_05"></param>
+        </member>
+        <member name="M:OutSystems.NssBPA.IssBPA.MssCreateCabecalho(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sscbc_mvm_03"></param>
+            <param name="sscbc_lin_04"></param>
+            <param name="sscbc_flh_05"></param>
+        </member>
+    </members>
+</doc>
