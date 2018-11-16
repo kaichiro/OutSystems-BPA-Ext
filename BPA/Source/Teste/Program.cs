@@ -13,10 +13,9 @@ namespace Teste
         static void Main(string[] args)
         {
             BPA_Controller ctrl = new BPA_Controller();
-            ctrl.CreateBPA_Cabecalho(DateTime.Now, 5, 1, "resp 07", "SCMR", "3216549870", "Santa Casa de Misericordia", "M");
+            ctrl.CreateBPA_Cabecalho(DateTime.Now, "resp 07", "SCMR", "3216549870", "Santa Casa de Misericordia", "M", 300);
 
-            ctrl.AddBPA_Individualizado("31", DateTime.Now.AddMinutes(3), "357", "1-1/8", 1);
-            ctrl.AddBPA_Individualizado("32", DateTime.Now.AddMinutes(3), "159", "11119", 1);
+            ctrl.AddBPA_Individualizado("", DateTime.Now, "", "", DateTime.Now, "", "", "", "", "", 1, "", "", "", "", DateTime.Now.AddYears(-26), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
             Console.Out.WriteLine(ctrl.GetFullBPA());
         }

@@ -5,33 +5,36 @@ using System.Text;
 
 namespace OutSystems.NssBPA
 {
+
     public class BPA_Cabecalho
     {
+        public BPA_Cabecalho(DateTime cbc_mvm_03/*, int cbc_lin_04, int cbc_flh_05, string cbc_smt_vrf_06*/,
+            string cbc_rsp_07, string cbc_sgl_08, string cbc_cgccpf_09, string cbc_dst_10, string cbc_dst_in_11,
+            int nrFolhaIniciar)
+        {
+            Cbc_mvm_03 = cbc_mvm_03;
+            //Cbc_lin_04 = cbc_lin_04;
+            //Cbc_flh_05 = cbc_flh_05;
+            //Cbc_smt_vrf_06 = cbc_smt_vrf_06 ?? throw new ArgumentNullException(nameof(cbc_smt_vrf_06));
+            Cbc_rsp_07 = cbc_rsp_07 ?? throw new ArgumentNullException(nameof(cbc_rsp_07));
+            Cbc_sgl_08 = cbc_sgl_08 ?? throw new ArgumentNullException(nameof(cbc_sgl_08));
+            Cbc_cgccpf_09 = cbc_cgccpf_09 ?? throw new ArgumentNullException(nameof(cbc_cgccpf_09));
+            Cbc_dst_10 = cbc_dst_10 ?? throw new ArgumentNullException(nameof(cbc_dst_10));
+            Cbc_dst_in_11 = cbc_dst_in_11 ?? throw new ArgumentNullException(nameof(cbc_dst_in_11));
+            NrFolhaIniciar = nrFolhaIniciar;
+        }
+
         private DateTime Cbc_mvm_03 { get; set; }
-        private int Cbc_lin_04 { get; set; }
-        private int Cbc_flh_05 { get; set; }
+        public int Cbc_lin_04 { get; set; }
+        public int Cbc_flh_05 { get; set; }
         private string Cbc_smt_vrf_06 { get; set; }
         private string Cbc_rsp_07 { get; set; }
         private string Cbc_sgl_08 { get; set; }
         private string Cbc_cgccpf_09 { get; set; }
         private string Cbc_dst_10 { get; set; }
         private string Cbc_dst_in_11 { get; set; }
-        private string Cbc_versao_12 { get; set; }
-
-        public BPA_Cabecalho(DateTime cbc_mvm_03, int cbc_lin_04, int cbc_flh_05/*, string cbc_smt_vrf_06*/,
-            string cbc_rsp_07, string cbc_sgl_08, string cbc_cgccpf_09, string cbc_dst_10, string cbc_dst_in_11)
-        {
-            Cbc_mvm_03 = cbc_mvm_03;
-            Cbc_lin_04 = cbc_lin_04;
-            Cbc_flh_05 = cbc_flh_05;
-            //Cbc_smt_vrf_06 = cbc_smt_vrf_06 ?? throw new ArgumentNullException(nameof(cbc_smt_vrf_06));
-            Cbc_rsp_07 = cbc_rsp_07;
-            Cbc_sgl_08 = cbc_sgl_08;
-            Cbc_cgccpf_09 = cbc_cgccpf_09;
-            Cbc_dst_10 = cbc_dst_10;
-            Cbc_dst_in_11 = cbc_dst_in_11;
-            Cbc_versao_12 = "v1.00.00";
-        }
+        private string Cbc_versao_12 => "v1.00.00";
+        public int NrFolhaIniciar { get; set; }
 
         public string GetCabecalhoLine(string _Cbc_smt_vrf_06_)
         {
@@ -47,8 +50,8 @@ namespace OutSystems.NssBPA
                 + BPA_Utils.UPadRight(Cbc_dst_10, 40, BPA_Utils.Tipo.ESPACO)
                 + BPA_Utils.UPadRight(Cbc_dst_in_11, 1, BPA_Utils.Tipo.ESPACO)
                 + BPA_Utils.UPadRight(Cbc_versao_12, 10, BPA_Utils.Tipo.ESPACO)
-                ;
-            return retorno + string.Format("({0})", retorno.Length);
+                + "\r\n";
+            return retorno  + $"({retorno.Length})" + "\r\n";
         }
     }
 }
