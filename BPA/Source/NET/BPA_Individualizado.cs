@@ -27,7 +27,7 @@ namespace OutSystems.NssBPA
 
         public string GetIndividualizadoLine()
         {
-            return "03"
+            string retorno = "03"
                 + Prd_cnes_02
                 + BPA_Utils.UPadLeft(Prd_cmp_03.ToString(), 7, BPA_Utils.Tipo.ZERO)
                 + $"{Prd_cnsmed_04:yyyyMM}"
@@ -35,6 +35,8 @@ namespace OutSystems.NssBPA
                 + BPA_Utils.UPadLeft(Prd_pa_09.ToString(), 10, BPA_Utils.Tipo.ZERO)
                 + BPA_Utils.UPadLeft(Prd_qt_15.ToString(), 6, BPA_Utils.Tipo.ZERO)
                 ;
+            retorno = retorno.Replace("\r\n", "");
+            return retorno + string.Format("({0})", retorno.Length);
         }
     }
 }
