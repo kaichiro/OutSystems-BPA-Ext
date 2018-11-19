@@ -51,7 +51,7 @@ namespace OutSystems.NssBPA
                 + BPA_Utils.UPadRight(Cbc_dst_in_11, 1, BPA_Utils.Tipo.ESPACO)
                 + BPA_Utils.UPadRight(Cbc_versao_12, 10, BPA_Utils.Tipo.ESPACO)
                 + "\r\n";
-            return retorno  + $"({retorno.Length})" + "\r\n";
+            return retorno /*+ $"({retorno.Length})" + "\r\n"*/;
         }
     }
 }

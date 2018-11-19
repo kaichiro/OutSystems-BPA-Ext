@@ -17,7 +17,17 @@ namespace Teste
 
             ctrl.AddBPA_Individualizado("", DateTime.Now, "", "", DateTime.Now, "", "", "", "", "", 1, "", "", "", "", DateTime.Now.AddYears(-26), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-            Console.Out.WriteLine(ctrl.GetFullBPA());
+
+            string FileName = string.Format("{0:yyyy.MM.dd-HH.mm.ss}.bpa", DateTime.Now);
+            string FullFileName = FileName;
+
+            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(FullFileName, true))
+            {
+                sw.WriteLine(ctrl.GetFullBPA());
+                sw.Close();
+                System.Diagnostics.Process.Start(".");
+
+            }
         }
     }
 }

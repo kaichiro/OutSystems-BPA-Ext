@@ -135,7 +135,7 @@ namespace OutSystems.NssBPA
                 + BPA_Utils.UPadLeft(Prd_ine_37, 10, BPA_Utils.Tipo.ZERO)
                 ;
             retorno = retorno.Replace("\r\n", "") + "\r\n";
-            return retorno + $"({retorno.Length})" + "\r\n";
+            return retorno /*+ $"({retorno.Length})" + "\r\n"*/;
         }
     }
 }
