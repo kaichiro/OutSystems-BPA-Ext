@@ -12,7 +12,7 @@ namespace OutSystems.NssBPA
             string prd_sexo_11, string prd_ibge_12, string prd_cid_13/*, int prd_idade_14*/, int prd_qt_15,
             string prd_caten_16, string prd_naut_17, string prd_org_18, string prd_nmpac_19, DateTime prd_dtnasc_20,
             string prd_raca_21, string prd_etnia_22, string prd_nac_23, string prd_srv_24, string prd_clf_25,
-            string prd_equipe_seq_26, string prd_equipe_area_27, string prd_cnpj_28, string prd_cp_pcnte_29,
+            string prd_equipe_seq_26, string prd_equipe_area_27, string prd_cnpj_28, string prd_cep_pcnte_29,
             string prd_lograd_pcnte_pcnte_30, string prd_end_pcnte_pcnte_31, string prd_compl_pcnte_32,
             string prd_num_pcnte_33, string prd_bairro_pcnte_34, string prd_ddtel_pcnte_35, string prd_email_pcnte_36,
             string prd_ine_37)
@@ -44,7 +44,7 @@ namespace OutSystems.NssBPA
             Prd_equipe_seq_26 = prd_equipe_seq_26 ?? throw new ArgumentNullException(nameof(prd_equipe_seq_26));
             Prd_equipe_area_27 = prd_equipe_area_27 ?? throw new ArgumentNullException(nameof(prd_equipe_area_27));
             Prd_cnpj_28 = prd_cnpj_28 ?? throw new ArgumentNullException(nameof(prd_cnpj_28));
-            Prd_cp_pcnte_29 = prd_cp_pcnte_29 ?? throw new ArgumentNullException(nameof(prd_cp_pcnte_29));
+            Prd_cep_pcnte_29 = prd_cep_pcnte_29 ?? throw new ArgumentNullException(nameof(prd_cep_pcnte_29));
             Prd_lograd_pcnte_pcnte_30 = prd_lograd_pcnte_pcnte_30 ?? throw new ArgumentNullException(nameof(prd_lograd_pcnte_pcnte_30));
             Prd_end_pcnte_pcnte_31 = prd_end_pcnte_pcnte_31 ?? throw new ArgumentNullException(nameof(prd_end_pcnte_pcnte_31));
             Prd_compl_pcnte_32 = prd_compl_pcnte_32 ?? throw new ArgumentNullException(nameof(prd_compl_pcnte_32));
@@ -82,7 +82,7 @@ namespace OutSystems.NssBPA
         private string Prd_equipe_seq_26 { get; set; }
         private string Prd_equipe_area_27 { get; set; }
         private string Prd_cnpj_28 { get; set; }
-        private string Prd_cp_pcnte_29 { get; set; }
+        private string Prd_cep_pcnte_29 { get; set; }
         private string Prd_lograd_pcnte_pcnte_30 { get; set; }
         private string Prd_end_pcnte_pcnte_31 { get; set; }
         private string Prd_compl_pcnte_32 { get; set; }
@@ -115,15 +115,26 @@ namespace OutSystems.NssBPA
                 + BPA_Utils.UPadLeft(Prd_naut_17.ToString(), 13, BPA_Utils.Tipo.ZERO)
                 + BPA_Utils.UPadRight(Prd_org_18, 3, BPA_Utils.Tipo.ESPACO)
                 + BPA_Utils.UPadRight(Prd_nmpac_19, 30, BPA_Utils.Tipo.ESPACO)
-                + $"{Prd_dtnasc_20:yyMMdd}"
+                + $"{Prd_dtnasc_20:yyyyMMdd}"
                 + BPA_Utils.UPadLeft(Prd_raca_21, 2, BPA_Utils.Tipo.ZERO)
                 + BPA_Utils.UPadLeft(Prd_etnia_22, 4, BPA_Utils.Tipo.ZERO)
-                + BPA_Utils.UPadLeft(Prd_nac_23.ToString(), 3, BPA_Utils.Tipo.ZERO)
-                + BPA_Utils.UPadLeft(Prd_srv_24.ToString(), 3, BPA_Utils.Tipo.ZERO)
-                + BPA_Utils.UPadLeft(Prd_clf_25.ToString(), 3, BPA_Utils.Tipo.ZERO)
-                + BPA_Utils.UPadLeft(Prd_equipe_seq_26.ToString(), 3, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_nac_23, 3, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_srv_24, 3, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_clf_25, 3, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_equipe_seq_26, 8, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_equipe_area_27, 4, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_cnpj_28, 14, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_cep_pcnte_29, 8, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadLeft(Prd_lograd_pcnte_pcnte_30, 3, BPA_Utils.Tipo.ZERO)
+                + BPA_Utils.UPadRight(Prd_end_pcnte_pcnte_31, 30, BPA_Utils.Tipo.ESPACO)
+                + BPA_Utils.UPadRight(Prd_compl_pcnte_32, 10, BPA_Utils.Tipo.ESPACO)
+                + BPA_Utils.UPadRight(Prd_num_pcnte_33, 5, BPA_Utils.Tipo.ESPACO)
+                + BPA_Utils.UPadRight(Prd_bairro_pcnte_34, 30, BPA_Utils.Tipo.ESPACO)
+                + BPA_Utils.UPadRight(Prd_ddtel_pcnte_35, 11, BPA_Utils.Tipo.ESPACO)
+                + BPA_Utils.UPadRight(Prd_email_pcnte_36, 40, BPA_Utils.Tipo.ESPACO)
+                + BPA_Utils.UPadLeft(Prd_ine_37, 10, BPA_Utils.Tipo.ZERO)
                 ;
-            retorno = retorno.Replace("\r\n", "") /*+ "\r\n"*/;
+            retorno = retorno.Replace("\r\n", "") + "\r\n";
             return retorno + $"({retorno.Length})" + "\r\n";
         }
     }
