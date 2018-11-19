@@ -9,8 +9,6 @@ namespace OutSystems.NssBPA
     {
         private BPA_Cabecalho bpaCabecalho;
         private List<BPA_Individualizado> bpaIndividualizados = new List<BPA_Individualizado>();
-        private int QtdeLinhas { get; set; }
-        private int NrSequencial { get; set; }
 
         public void CreateBPA_Cabecalho(DateTime cbc_mvm_03/*, int cbc_lin_04, int cbc_flh_05, string cbc_smt_vrf_06*/,
                 string cbc_rsp_07, string cbc_sgl_08, string cbc_cgccpf_09, string cbc_dst_10, string cbc_dst_in_11,
@@ -43,31 +41,37 @@ namespace OutSystems.NssBPA
 
         private string GetIndividualizadosLines()
         {
-            NrSequencial = bpaCabecalho.NrFolhaIniciar;
-            int QtdeLinhasLocal = 0;
+            int QtdeLinhas = 0;
+            int NrFolha = bpaCabecalho.NrFolhaIniciar;
+            int QtdeSequenciaLocal = 0;
 
             Int64 acum = 0;
-            string individualizadosLinhas = "";
+            string individualizadosLinhas = string.Empty;
+
             foreach (BPA_Individualizado indiv in bpaIndividualizados)
             {
-                if (QtdeLinhasLocal < 100)
+                if (QtdeSequenciaLocal < 99)
                 {
-                    QtdeLinhasLocal++;
+                    QtdeSequenciaLocal++;
                 }
                 else
                 {
-                    QtdeLinhasLocal = 1;
-                    NrSequencial++;
+                    QtdeSequenciaLocal = 1;
+                    NrFolha++;
                 }
 
                 acum += indiv.Get_09_15();
-                indiv.Prd_flh_07 = QtdeLinhasLocal;
-                indiv.Prd_seq_08 = NrSequencial;
-                individualizadosLinhas += indiv.GetIndividualizadoLine() ;
+
+                indiv.Prd_flh_07 = NrFolha;
+                indiv.Prd_seq_08 = QtdeSequenciaLocal;
+
+                individualizadosLinhas += indiv.GetIndividualizadoLine();
+
+                QtdeLinhas++;
             }
 
             bpaCabecalho.Cbc_lin_04 = QtdeLinhas;
-            bpaCabecalho.Cbc_flh_05 = NrSequencial;
+            bpaCabecalho.Cbc_flh_05 = NrFolha - bpaCabecalho.NrFolhaIniciar + 1;
 
             return bpaCabecalho.GetCabecalhoLine($"{(acum % 1111) + 1111}") + individualizadosLinhas;
         }
