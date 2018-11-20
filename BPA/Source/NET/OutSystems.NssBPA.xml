@@ -4,21 +4,230 @@
         <name>OutSystems.NssBPA</name>
     </assembly>
     <members>
-        <member name="M:OutSystems.NssBPA.CssBPA.MssCreateCabecalho(System.Int32,System.Int32,System.Int32)">
+        <member name="M:OutSystems.NssBPA.CssBPA.MssAddIndividualizado(OutSystems.NssBPA.RLIndividualizadoRecordList)">
             <summary>
-            
+            . Acrescenta linha referente a registros de Individualizados (tipo 03) .
             </summary>
-            <param name="sscbc_mvm_03"></param>
-            <param name="sscbc_lin_04"></param>
-            <param name="sscbc_flh_05"></param>
+            <param name="ssprd_cnes_02">. Cadastro Nacional de Estabelecimentos de Saúde - CNES .</param>
+            <param name="ssprd_cmp_03">. Competência/data de realialização do procedimento. .</param>
+            <param name="ssprd_cnsmed_04">. Número CNS do Profissional, com dígito verificador válido. .</param>
+            <param name="ssprd_cbo_05">. Código Brasileiro de Ocupação - COB do profissional. .</param>
+            <param name="ssprd_dtaten_06">. Data do atendimento. .</param>
+            <param name="ssprd_pa_09">. Código do procedimento ambulatorial, com dígito verificador. Ex.: 0202010015, 0202020541, ... .</param>
+            <param name="ssprd_cnspac_10">. CNS do paciente, com dígito verificador. .</param>
+            <param name="ssprd_sexo_11">. Sexo do paciente (M masculino, F feminino). .</param>
+            <param name="ssprd_ibge_12">. Código IBGE do município de residência paciente. .</param>
+            <param name="ssprd_cid_13">. CID-10 .</param>
+            <param name="ssprd_qt_15">. Quantidade de procedimentos produzidos. .</param>
+            <param name="ssprd_caten_16">. Carater de atendimento (apenas código): 01-eletivo, 02-urgência, 03-acidente no local de trabalho, 04-acidente no trajeto par ao trabalho, 05-outros tipos de acidente de trânsito, 06-outros tipos de lesões. .</param>
+            <param name="ssprd_naut_17">. Número de autorização do estabelecimento (número protocolo). .</param>
+            <param name="ssprd_org_18">. Orgão de informações: BPA-SIA/SUS, PNI-Prog. Nac. de Imunizações, SIE-SIGAE, SIB-SIGAB, PAC-Programa Ação Comunitária, SCL-SISCOLO, EXT-Outros sistemas. Por padrão, informe BPA. .</param>
+            <param name="ssprd_nmpac_19">. Nome completo do paciente. .</param>
+            <param name="ssprd_dtnasc_20">. Data nascimento do paciente. .</param>
+            <param name="ssIndividualizadoStrc"></param>
         </member>
-        <member name="M:OutSystems.NssBPA.IssBPA.MssCreateCabecalho(System.Int32,System.Int32,System.Int32)">
+        <member name="M:OutSystems.NssBPA.CssBPA.MssCreateCabecalho(System.DateTime,System.String,System.String,System.String,System.String,System.String,System.Int32,OutSystems.NssBPA.RCCabecalhoRecord)">
             <summary>
-            
+            . Cria cabeçalho de registro Boletim de Produção Ambulatorial (BPA). .
             </summary>
-            <param name="sscbc_mvm_03"></param>
-            <param name="sscbc_lin_04"></param>
-            <param name="sscbc_flh_05"></param>
+            <param name="sscbc_mvm_03">. Data de Processamento de Produção. .</param>
+            <param name="sscbc_rsp_07">. Nome do orgão responsável pela informação. Ex.: Laboratorio Ab Clinico .</param>
+            <param name="sscbc_sgl_08">. Sigla do orgão responsável pela informação. Ex.: LABC .</param>
+            <param name="sscbc_cgccpf_09">. CGC/CPF do prestador ou do órgão público responsável pela informação, conforme cadastro na Receita Federal. .</param>
+            <param name="sscbc_dst_10">. Nome do órgão de saúde destino do arquivo. Ex.: Secretaria Mpnicipal de Saudade de Resende .</param>
+            <param name="sscbc_dst_in_11">. Indicador do órgão destino (E estadual ou M municipal). .</param>
+            <param name="ssnrFolhaIniciar">. Contador de folhas. Ex.: 300 .</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.IssBPA.MssCreateCabecalho(System.DateTime,System.String,System.String,System.String,System.String,System.String,System.Int32,OutSystems.NssBPA.RCCabecalhoRecord)">
+            <summary>
+            . Cria cabeçalho de registro Boletim de Produção Ambulatorial (BPA). .
+            </summary>
+            <param name="sscbc_mvm_03">. Data de Processamento de Produção. .</param>
+            <param name="sscbc_rsp_07">. Nome do orgão responsável pela informação. Ex.: Laboratorio Ab Clinico .</param>
+            <param name="sscbc_sgl_08">. Sigla do orgão responsável pela informação. Ex.: LABC .</param>
+            <param name="sscbc_cgccpf_09">. CGC/CPF do prestador ou do órgão público responsável pela informação, conforme cadastro na Receita Federal. .</param>
+            <param name="sscbc_dst_10">. Nome do órgão de saúde destino do arquivo. Ex.: Secretaria Mpnicipal de Saudade de Resende .</param>
+            <param name="sscbc_dst_in_11">. Indicador do órgão destino (E estadual ou M municipal). .</param>
+            <param name="ssnrFolhaIniciar">. Contador de folhas. Ex.: 300 .</param>
+            <param name="ssCabecalho">. Utilizando uma Structure Cabecalho em forma de Record. .</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.IssBPA.MssAddIndividualizado(OutSystems.NssBPA.RLIndividualizadoRecordList)">
+            <summary>
+            . Acrescenta linha referente a registros de Individualizados (tipo 03) .
+            </summary>
+            <param name="ssIndividualizado">. Utilizando uma Structure Individualizado em forma de Record List. .</param>
+        </member>
+        <member name="T:OutSystems.NssBPA.STIndividualizadoStructure">
+            <summary>
+            Structure <code>STIndividualizadoStructure</code> that represents the Service Studio structure
+             <code>Individualizado</code> <p> Description: </p>
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.STIndividualizadoStructure.Read(System.Data.IDataReader,System.Int32@)">
+            <summary>
+            Read a record from database
+            </summary>
+            <param name="r"> Data base reader</param>
+            <param name="index"> index</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.STIndividualizadoStructure.ReadDB(System.Data.IDataReader)">
+            <summary>
+            Read from database
+            </summary>
+            <param name="r"> Data reader</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.STIndividualizadoStructure.ReadIM(OutSystems.NssBPA.STIndividualizadoStructure)">
+            <summary>
+            Read from record
+            </summary>
+            <param name="r"> Record</param>
+        </member>
+        <member name="T:OutSystems.NssBPA.STCabecalhoStructure">
+            <summary>
+            Structure <code>STCabecalhoStructure</code> that represents the Service Studio structure
+             <code>Cabecalho</code> <p> Description: </p>
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.STCabecalhoStructure.Read(System.Data.IDataReader,System.Int32@)">
+            <summary>
+            Read a record from database
+            </summary>
+            <param name="r"> Data base reader</param>
+            <param name="index"> index</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.STCabecalhoStructure.ReadDB(System.Data.IDataReader)">
+            <summary>
+            Read from database
+            </summary>
+            <param name="r"> Data reader</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.STCabecalhoStructure.ReadIM(OutSystems.NssBPA.STCabecalhoStructure)">
+            <summary>
+            Read from record
+            </summary>
+            <param name="r"> Record</param>
+        </member>
+        <member name="T:OutSystems.NssBPA.RCIndividualizadoRecord">
+            <summary>
+            Structure <code>RCIndividualizadoRecord</code>
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.RCIndividualizadoRecord.Read(System.Data.IDataReader,System.Int32@)">
+            <summary>
+            Read a record from database
+            </summary>
+            <param name="r"> Data base reader</param>
+            <param name="index"> index</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RCIndividualizadoRecord.ReadDB(System.Data.IDataReader)">
+            <summary>
+            Read from database
+            </summary>
+            <param name="r"> Data reader</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RCIndividualizadoRecord.ReadIM(OutSystems.NssBPA.RCIndividualizadoRecord)">
+            <summary>
+            Read from record
+            </summary>
+            <param name="r"> Record</param>
+        </member>
+        <member name="T:OutSystems.NssBPA.RCCabecalhoRecord">
+            <summary>
+            Structure <code>RCCabecalhoRecord</code>
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.RCCabecalhoRecord.Read(System.Data.IDataReader,System.Int32@)">
+            <summary>
+            Read a record from database
+            </summary>
+            <param name="r"> Data base reader</param>
+            <param name="index"> index</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RCCabecalhoRecord.ReadDB(System.Data.IDataReader)">
+            <summary>
+            Read from database
+            </summary>
+            <param name="r"> Data reader</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RCCabecalhoRecord.ReadIM(OutSystems.NssBPA.RCCabecalhoRecord)">
+            <summary>
+            Read from record
+            </summary>
+            <param name="r"> Record</param>
+        </member>
+        <member name="T:OutSystems.NssBPA.RLIndividualizadoRecordList">
+            <summary>
+            RecordList type <code>RLIndividualizadoRecordList</code> that represents a record list of
+             <code>Individualizado</code>
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLIndividualizadoRecordList.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLIndividualizadoRecordList.#ctor(System.Data.IDbTransaction)">
+            <summary>
+            Constructor with transaction parameter
+            </summary>
+            <param name="trans"> IDbTransaction Parameter</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLIndividualizadoRecordList.#ctor(System.Data.IDbTransaction,OutSystems.HubEdition.RuntimePlatform.Db.OSList{OutSystems.NssBPA.RCIndividualizadoRecord}.ReadDBMethodDelegate)">
+            <summary>
+            Constructor with transaction parameter and alternate read method
+            </summary>
+            <param name="trans"> IDbTransaction Parameter</param>
+            <param name="alternateReadDBMethod"> Alternate Read Method</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLIndividualizadoRecordList.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor declaration for serialization
+            </summary>
+            <param name="info"> SerializationInfo</param>
+            <param name="context"> StreamingContext</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLIndividualizadoRecordList.NewList">
+            <summary>
+            Create as new list
+            </summary>
+            <returns>The new record list</returns>
+        </member>
+        <member name="T:OutSystems.NssBPA.RLCabecalhoRecordList">
+            <summary>
+            RecordList type <code>RLCabecalhoRecordList</code> that represents a record list of
+             <code>Cabecalho</code>
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLCabecalhoRecordList.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLCabecalhoRecordList.#ctor(System.Data.IDbTransaction)">
+            <summary>
+            Constructor with transaction parameter
+            </summary>
+            <param name="trans"> IDbTransaction Parameter</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLCabecalhoRecordList.#ctor(System.Data.IDbTransaction,OutSystems.HubEdition.RuntimePlatform.Db.OSList{OutSystems.NssBPA.RCCabecalhoRecord}.ReadDBMethodDelegate)">
+            <summary>
+            Constructor with transaction parameter and alternate read method
+            </summary>
+            <param name="trans"> IDbTransaction Parameter</param>
+            <param name="alternateReadDBMethod"> Alternate Read Method</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLCabecalhoRecordList.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor declaration for serialization
+            </summary>
+            <param name="info"> SerializationInfo</param>
+            <param name="context"> StreamingContext</param>
+        </member>
+        <member name="M:OutSystems.NssBPA.RLCabecalhoRecordList.NewList">
+            <summary>
+            Create as new list
+            </summary>
+            <returns>The new record list</returns>
         </member>
     </members>
 </doc>
